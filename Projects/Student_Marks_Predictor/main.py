@@ -46,11 +46,6 @@ new_student = pd.DataFrame({
 predictions = marks_model.predict(new_student)
 print("Predicted Marks:",predictions[0])
 
-##print("Actual Marks:", Y_test.values)
-
-##error = mean_absolute_error(Y_test,predictions)
-##print("Mean Absolute Error: ",error)
-
 print(df)
 
 print(df.head(4))
