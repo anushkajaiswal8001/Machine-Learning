@@ -7,8 +7,7 @@ from sklearn.metrics import recall_score
 from sklearn.preprocessing import StandardScaler  
 from sklearn.metrics import classification_report
 from sklearn.metrics import f1_score
-# from sklearn.model_selection import cross_val_score
-# from sklearn.pipeline import make_pipeline
+
 
 df = pd.read_csv("data.csv")
 print(df.head())
@@ -46,18 +45,7 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-# ##train the model
-# churn_model = make_pipeline(
-#     StandardScaler(),
-#     LogisticRegression(max_iter=1000, class_weight= "balanced")
-# )
-# churn_model.fit(X_train,Y_train)
-# cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=10)
 
-# scores = cross_val_score(churn_model, X, Y, cv=5, scoring="accuracy")
-# print(scores)
-# print(scores.mean())
-# print(scores.std())
 churn_model = LogisticRegression(max_iter=1000, class_weight= "balanced")
 
 churn_model.fit(X_train,Y_train)
@@ -102,20 +90,7 @@ print(recall_score(Y_test, predictions_03, pos_label="Yes"))
 print("F1-score:")
 print(f1_score(Y_test, predictions_03, pos_label="Yes"))
 
-#print(classification_report(Y_test, predictions_03))
 
-## checking performance
-
-##accuracy = accuracy_score(Y_test,predictions)
-##print("accuracy is ",accuracy)
-# recall = recall_score(Y_test,predictions,pos_label = "Yes")
-# print(recall)
-
-# result  = confusion_matrix(Y_test,predictions)
-# print(result)
-
-# f1 = f1_score(Y_test, predictions, pos_label="Yes")
-# print("F1-score is", f1)
 print("Default threshold results:")
 print(confusion_matrix(Y_test, predictions))
 print("Accuracy:", accuracy_score(Y_test, predictions))
